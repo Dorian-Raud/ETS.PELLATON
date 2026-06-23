@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import type { Artist, Artwork } from "@prisma/client";
 import { saveArtwork } from "./actions";
+import { MAX_IMAGE_SIZE_BYTES, MAX_IMAGE_SIZE_MB } from "@/lib/constants";
 import styles from "../admin-form.module.css";
 
 export default function ArtworkForm({
@@ -13,9 +14,26 @@ export default function ArtworkForm({
   artists: Artist[];
 }) {
   const [state, action, pending] = useActionState(saveArtwork, undefined);
+  const [fileError, setFileError] = useState<string | null>(null);
+
+  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (file && file.size > MAX_IMAGE_SIZE_BYTES) {
+      setFileError(`L'image dépasse ${MAX_IMAGE_SIZE_MB} Mo. Choisissez un fichier plus léger.`);
+      event.target.value = "";
+    } else {
+      setFileError(null);
+    }
+  }
 
   return (
-    <form action={action} className={styles.form}>
+    <form
+      action={action}
+      className={styles.form}
+      onSubmit={(event) => {
+        if (fileError) event.preventDefault();
+      }}
+    >
       {artwork && <input type="hidden" name="id" value={artwork.id} />}
 
       <div className={styles.field}>
@@ -85,9 +103,10 @@ export default function ArtworkForm({
         {artwork?.imageUrl && (
           <p className={styles.currentImage}>Image actuelle : conservée si aucun fichier n&apos;est choisi.</p>
         )}
-        <input id="image" name="image" type="file" accept="image/*" />
+        <input id="image" name="image" type="file" accept="image/*" onChange={handleFileChange} />
       </div>
 
+      {fileError && <p className={styles.error}>{fileError}</p>}
       {state?.error && <p className={styles.error}>{state.error}</p>}
 
       <button type="submit" disabled={pending} className={styles.submit}>

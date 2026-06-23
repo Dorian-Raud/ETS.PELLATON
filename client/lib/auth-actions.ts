@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { redirect } from "next/navigation";
-import bcrypt from "bcryptjs";
+import { verify } from "@node-rs/argon2";
 import { prisma } from "@/lib/prisma";
 import { createSession } from "@/lib/session";
 
@@ -32,7 +32,7 @@ export async function loginAction(
     return { error: "Identifiants invalides." };
   }
 
-  const isValid = await bcrypt.compare(password, user.passwordHash);
+  const isValid = await verify(user.passwordHash, password);
   if (!isValid) {
     return { error: "Identifiants invalides." };
   }

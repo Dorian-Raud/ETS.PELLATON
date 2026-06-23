@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./Header.module.css";
 
 const links = [
-  { href: "#galerie", label: "Galerie" },
-  { href: "#artistes", label: "Artistes" },
-  { href: "#conseil", label: "Conseil" },
-  { href: "#apropos", label: "À propos" },
+  { href: "/galerie", label: "Galerie" },
+  { href: "/artistes", label: "Artistes" },
+  { href: "/#conseil", label: "Conseil" },
+  { href: "/#apropos", label: "À propos" },
 ];
 
 export default function Header() {
@@ -23,14 +24,14 @@ export default function Header() {
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
-      <a href="#top" className={styles.logo}>
+      <Link href="/#top" className={styles.logo}>
         <Image src="/logo.jpg" alt="Galerie" width={32} height={32} priority />
-      </a>
+      </Link>
       <nav className={styles.nav}>
         <ul>
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
+              <Link href={link.href}>{link.label}</Link>
             </li>
           ))}
         </ul>
