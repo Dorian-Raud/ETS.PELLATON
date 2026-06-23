@@ -2,33 +2,47 @@
   position: relative;
   height: 100vh;
   min-height: 560px;
-  width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  background-color: black;
 }
 
-.image {
+/* 1. LA VIDÉO EN ARRIÈRE-PLAN */
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
   object-fit: cover;
+  z-index: 0;
+  /* Placé tout au fond */
 }
 
+/* 2. L'OVERLAY SOMBRE */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(25, 24, 22, 0.25) 0%,
-    rgba(25, 24, 22, 0.1) 45%,
-    rgba(25, 24, 22, 0.45) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(25, 24, 22, 0.25) 0%,
+      rgba(25, 24, 22, 0.1) 45%,
+      rgba(25, 24, 22, 0.45) 100%);
+  z-index: 1;
+  /* Par-dessus la vidéo, mais sous le texte */
 }
 
+/* 3. LE CONTENU (TEXTE) */
 .content {
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  /* Changé de relative à absolute pour s'aligner sur le parent */
+  z-index: 2;
+  /* Passe par-dessus l'overlay et la vidéo */
   text-align: center;
   color: #f7f6f3;
+  /* Grâce au flexbox du parent .hero, le contenu reste parfaitement centré */
 }
 
 .eyebrow {
