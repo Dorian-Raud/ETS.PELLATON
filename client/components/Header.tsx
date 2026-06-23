@@ -5,8 +5,8 @@ import Image from "next/image";
 import styles from "./Header.module.css";
 
 const links = [
-  { href: "#artistes", label: "Artistes" },
   { href: "#galerie", label: "Galerie" },
+  { href: "#artistes", label: "Artistes" },
   { href: "#conseil", label: "Conseil" },
   { href: "#apropos", label: "À propos" },
 ];
