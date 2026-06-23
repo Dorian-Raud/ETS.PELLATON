@@ -1,0 +1,33 @@
+.title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 1fr));
+  gap: 20px;
+  max-width: 720px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  padding: 24px;
+  text-align: center;
+}
+
+.value {
+  font-family: var(--font-serif);
+  font-size: 40px;
+}
+
+.label {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-grey);
+  margin-top: 8px;
+}

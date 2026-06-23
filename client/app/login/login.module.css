@@ -1,0 +1,86 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-cream);
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  padding: 48px 40px;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--color-grey);
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-grey);
+}
+
+.field input {
+  border: 1px solid var(--border-medium);
+  padding: 10px 12px;
+  font-size: 14px;
+  background: var(--color-cream);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--color-ink);
+}
+
+.error {
+  color: #a3342c;
+  font-size: 13px;
+}
+
+.submit {
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-cream);
+  padding: 12px;
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.submit:hover:not(:disabled) {
+  opacity: 0.85;
+}
