@@ -29,6 +29,7 @@ model Artist {
 
 enum ArtworkStatus {
   AVAILABLE
+  RESERVED
   SOLD
 }
 
@@ -43,6 +44,28 @@ model Artwork {
   status      ArtworkStatus @default(AVAILABLE)
   artist      Artist        @relation(fields: [artistId], references: [id], onDelete: Cascade)
   artistId    String
+  orders      Order[]
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  EXPIRED
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  artwork         Artwork     @relation(fields: [artworkId], references: [id])
+  artworkId       String
+  stripeSessionId String?     @unique
+  paymentIntentId String?
+  amount          Decimal     @db.Decimal(10, 2)
+  currency        String      @default("eur")
+  customerEmail   String?
+  status          OrderStatus @default(PENDING)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
 }

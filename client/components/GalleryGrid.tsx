@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Artist, Artwork } from "@prisma/client";
 import styles from "./GalleryGrid.module.css";
 
@@ -19,7 +20,11 @@ export default function GalleryGrid({ artworks }: { artworks: ArtworkWithArtist[
       ) : (
         <div className={styles.grid}>
           {artworks.map((artwork) => (
-            <article key={artwork.id} className={styles.card}>
+            <Link
+              key={artwork.id}
+              href={`/galerie/${artwork.id}`}
+              className={styles.card}
+            >
               <div className={styles.imageWrapper}>
                 {artwork.imageUrl ? (
                   <Image
@@ -31,8 +36,10 @@ export default function GalleryGrid({ artworks }: { artworks: ArtworkWithArtist[
                 ) : (
                   <div className={styles.placeholder} />
                 )}
-                {artwork.status === "SOLD" && (
-                  <span className={styles.badge}>Vendu</span>
+                {artwork.status !== "AVAILABLE" && (
+                  <span className={styles.badge}>
+                    {artwork.status === "SOLD" ? "Vendu" : "En cours d'achat"}
+                  </span>
                 )}
               </div>
               <h3 className={styles.title}>{artwork.title}</h3>
@@ -43,7 +50,7 @@ export default function GalleryGrid({ artworks }: { artworks: ArtworkWithArtist[
               <p className={styles.price}>
                 {priceFormatter.format(Number(artwork.price))}
               </p>
-            </article>
+            </Link>
           ))}
         </div>
       )}

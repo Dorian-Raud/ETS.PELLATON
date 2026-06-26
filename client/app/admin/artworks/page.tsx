@@ -35,7 +35,13 @@ export default async function ArtworksPage() {
               <td>{artwork.title}</td>
               <td>{artwork.artist.name}</td>
               <td>{Number(artwork.price).toLocaleString("fr-FR")} €</td>
-              <td>{artwork.status === "SOLD" ? "Vendu" : "Disponible"}</td>
+              <td>
+                {artwork.status === "SOLD"
+                  ? "Vendu"
+                  : artwork.status === "RESERVED"
+                    ? "En cours d'achat"
+                    : "Disponible"}
+              </td>
               <td className={styles.actions}>
                 <Link href={`/admin/artworks/${artwork.id}/edit`}>Modifier</Link>
                 <DeleteButton id={artwork.id} action={deleteArtwork} label={artwork.title} />

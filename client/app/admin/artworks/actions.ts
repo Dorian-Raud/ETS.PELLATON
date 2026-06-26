@@ -15,7 +15,7 @@ const ArtworkSchema = z.object({
   medium: z.string().optional(),
   year: z.string().optional(),
   artistId: z.string().min(1, "Artiste requis."),
-  status: z.enum(["AVAILABLE", "SOLD"]),
+  status: z.enum(["AVAILABLE", "RESERVED", "SOLD"]),
 });
 
 export type ArtworkFormState = { error?: string } | undefined;

@@ -1,0 +1,77 @@
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { getArtworkById } from "@/lib/data";
+import { createCheckout } from "@/lib/payment-actions";
+import styles from "./artwork.module.css";
+
+export const dynamic = "force-dynamic";
+
+const priceFormatter = new Intl.NumberFormat("fr-FR", {
+  style: "currency",
+  currency: "EUR",
+  maximumFractionDigits: 0,
+});
+
+const statusLabel: Record<string, string> = {
+  RESERVED: "En cours d'achat",
+  SOLD: "Vendu",
+};
+
+export default async function ArtworkPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const artwork = await getArtworkById(id);
+
+  if (!artwork) {
+    notFound();
+  }
+
+  return (
+    <>
+      <Header />
+      <main className={styles.section}>
+        <div className={styles.imageWrapper}>
+          {artwork.imageUrl ? (
+            <Image
+              src={artwork.imageUrl}
+              alt={artwork.title}
+              fill
+              className={styles.image}
+            />
+          ) : (
+            <div className={styles.placeholder} />
+          )}
+        </div>
+
+        <div className={styles.details}>
+          <h1 className={styles.title}>{artwork.title}</h1>
+          <p className={styles.artist}>{artwork.artist.name}</p>
+          <p className={styles.meta}>
+            {[artwork.medium, artwork.year].filter(Boolean).join(", ")}
+          </p>
+          <p className={styles.description}>{artwork.description}</p>
+          <p className={styles.price}>{priceFormatter.format(Number(artwork.price))}</p>
+
+          {artwork.status === "AVAILABLE" ? (
+            <form action={createCheckout}>
+              <input type="hidden" name="artworkId" value={artwork.id} />
+              <button type="submit" className={styles.buyButton}>
+                Acheter
+              </button>
+            </form>
+          ) : (
+            <p className={styles.unavailable}>
+              {statusLabel[artwork.status] ?? artwork.status}
+            </p>
+          )}
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+}

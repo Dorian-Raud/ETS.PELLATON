@@ -93,6 +93,7 @@ export default function ArtworkForm({
           <label htmlFor="status">Statut</label>
           <select id="status" name="status" defaultValue={artwork?.status ?? "AVAILABLE"}>
             <option value="AVAILABLE">Disponible</option>
+            <option value="RESERVED">En cours d&apos;achat</option>
             <option value="SOLD">Vendu</option>
           </select>
         </div>
