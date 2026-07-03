@@ -21,7 +21,10 @@ export default async function EditArtworkPage({
   return (
     <div>
       <h1 className={styles.pageTitle}>Modifier l&apos;œuvre</h1>
-      <ArtworkForm artwork={artwork} artists={artists} />
+      <ArtworkForm
+        artwork={{ ...artwork, price: Number(artwork.price) }}
+        artists={artists}
+      />
     </div>
   );
 }

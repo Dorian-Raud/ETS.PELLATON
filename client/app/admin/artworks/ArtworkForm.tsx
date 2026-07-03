@@ -1,16 +1,20 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import type { Artist, Artwork } from "@prisma/client";
+import type { Artist, Artwork } from "@/lib/generated/prisma/client";
 import { saveArtwork } from "./actions";
 import { MAX_IMAGE_SIZE_BYTES, MAX_IMAGE_SIZE_MB } from "@/lib/constants";
 import styles from "../admin-form.module.css";
+
+// price est un Decimal côté Prisma : non sérialisable vers un Client Component,
+// donc on le reçoit déjà converti en number.
+type ArtworkFormData = Omit<Artwork, "price"> & { price: number };
 
 export default function ArtworkForm({
   artwork,
   artists,
 }: {
-  artwork?: Artwork;
+  artwork?: ArtworkFormData;
   artists: Artist[];
 }) {
   const [state, action, pending] = useActionState(saveArtwork, undefined);

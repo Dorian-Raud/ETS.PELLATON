@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import type { Artist } from "@prisma/client";
+import type { Artist } from "@/lib/generated/prisma/client";
 import { saveArtist } from "./actions";
 import { MAX_IMAGE_SIZE_BYTES, MAX_IMAGE_SIZE_MB } from "@/lib/constants";
 import styles from "../admin-form.module.css";

@@ -28,12 +28,12 @@
 
 .imageWrapper {
   position: relative;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  overflow: hidden;
+  width: 200px;
+  height: 200px;
   margin: 0 auto 18px;
-  background: var(--color-grey-light);
+  position: relative;
+  overflow: hidden;
+  border: solid 2px white;
 }
 
 .image {

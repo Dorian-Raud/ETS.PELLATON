@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Artist } from "@prisma/client";
+import type { Artist } from "@/lib/generated/prisma/client";
 import styles from "./ArtistGrid.module.css";
 
 export default function ArtistGrid({ artists }: { artists: Artist[] }) {

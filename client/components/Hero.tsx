@@ -16,7 +16,9 @@ export default function Hero() {
         loop
         muted
         playsInline>
-        <source src="/78C67E0B-5B2D-404E-8D6B-BB4D0B994B11.mov" type="video/mp4" />
+        <source
+          src="https://ohujxhgkbzswgybanxze.supabase.co/storage/v1/object/public/videos/hero%20video.mp4"
+          type="video/mp4" />
 
       </video>
       <div className={styles.overlay} />

@@ -34,6 +34,7 @@
   background: var(--color-grey-light);
   margin-bottom: 18px;
   overflow: hidden;
+  border: solid 2px white;
 }
 
 .image {

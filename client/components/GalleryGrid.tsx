@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Artist, Artwork } from "@prisma/client";
+import type { Artist, Artwork } from "@/lib/generated/prisma/client";
 import styles from "./GalleryGrid.module.css";
 
 type ArtworkWithArtist = Artwork & { artist: Artist };

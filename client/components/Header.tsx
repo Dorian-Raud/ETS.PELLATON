@@ -8,8 +8,8 @@ import styles from "./Header.module.css";
 const links = [
   { href: "/galerie", label: "Galerie" },
   { href: "/artistes", label: "Artistes" },
-  { href: "/#conseil", label: "Conseil" },
-  { href: "/#apropos", label: "À propos" },
+  { href: "/conseil", label: "Conseil" },
+  { href: "/a-propos", label: "À propos" },
 ];
 
 export default function Header() {
