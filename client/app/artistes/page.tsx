@@ -1,6 +1,6 @@
-import Header from "@/components/Header";
-import ArtistGrid from "@/components/ArtistGrid";
-import Footer from "@/components/Footer";
+import Header from "@/components/Header/Header";
+import ArtistGrid from "@/components/ArtistGrid/ArtistGrid";
+import Footer from "@/components/Footer/Footer";
 import { getArtists } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
