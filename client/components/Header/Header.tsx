@@ -10,6 +10,7 @@ const links = [
   { href: "/artistes", label: "Artistes" },
   { href: "/conseil", label: "Conseil" },
   { href: "/a-propos", label: "À propos" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {

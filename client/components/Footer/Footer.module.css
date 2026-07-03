@@ -11,9 +11,34 @@
   margin-bottom: 8px;
 }
 
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+
+.links a {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--color-grey);
+  transition: opacity 0.3s ease;
+}
+
+.links a:hover {
+  opacity: 0.6;
+}
+
 .copy {
   font-size: 12px;
   color: var(--color-grey-light);
+}
+
+@media (max-width: 700px) {
+  .links {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 @media (max-width: 700px) {

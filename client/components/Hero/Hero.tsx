@@ -24,7 +24,7 @@ export default function Hero() {
       <div className={styles.overlay} />
       <div className={styles.content}>
         <p className={styles.eyebrow}>Galerie d&apos;art contemporain</p>
-        <h1 className={styles.title}>L&apos;art, sans détour</h1>
+        <h1 className={styles.title}>"Shaping contemporary perspectives"</h1>
       </div>
     </section>
   );
