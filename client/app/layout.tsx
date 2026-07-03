@@ -1,13 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   title: "Galerie d'art",
@@ -20,7 +12,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={cormorant.variable}>
+    <html lang="fr">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/mxf1gbl.css" />
+      </head>
       <body>{children}</body>
     </html>
   );

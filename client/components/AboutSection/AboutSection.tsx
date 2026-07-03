@@ -20,7 +20,7 @@ export default function AboutSection({
 
         <div className={styles.imageWrapper}>
           <img
-            src="/justina-2.jpeg"
+            src="/abou-pic.jpeg"
             alt="Justina"
             className={styles.image}
           />

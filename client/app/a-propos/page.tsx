@@ -3,7 +3,7 @@ import Footer from "@/components/Footer/Footer";
 import AboutSection from "@/components/AboutSection/AboutSection";
 
 const LOREM =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.";
+  "Fondé par Maxime Pellaton, Ets. Pellaton est un cabinet de conseil indépendant spécialisé dans l’art moderne et contemporain. Issu d’un parcours mêlant art, savoir-faire et accompagnement de projets culturels, Maxime Pellaton développe une pratique centrée sur la découverte, la promotion et l’accompagnement des artistes émergents, en créant des liens durables entre créateurs, collectionneurs et institutions. À travers un réseau de collectionneurs, d’artistes, de galeries, d’institutions et de professionnels du marché de l’art, Ets. Pellaton accompagne ses clients dans leurs acquisitions, la gestion de collections, la valorisation d’œuvres et le développement de projets culturels sur mesure. En parallèle de son activité de conseil, Maxime Pellaton documente le monde de l’art par la photographie, collaborant avec des artistes, des galeries et des institutions afin de produire des images qui témoignent avec justesse des œuvres, des expositions et des lieux qui les accueillent. Basé sur la Côte d’Azur et intervenant en France comme à l’international, Ets. Pellaton défend une approche indépendante, fondée sur la confiance, la discrétion et des relations durables avec ses clients et partenaires.";
 
 export default function AProposPage() {
   return (

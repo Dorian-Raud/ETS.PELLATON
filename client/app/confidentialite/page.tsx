@@ -45,6 +45,16 @@ export default function ConfidentialitePage() {
           </div>
 
           <div className={styles.block}>
+            <h2>Polices de caractères</h2>
+            <p>
+              Le site charge la police « The Seasons » depuis les serveurs d&apos;Adobe Fonts
+              (Adobe Inc.). Cette ressource externe est nécessaire à l&apos;affichage du site et
+              entraîne une requête vers les serveurs d&apos;Adobe à chaque visite, susceptible de
+              transmettre votre adresse IP à ce tiers.
+            </p>
+          </div>
+
+          <div className={styles.block}>
             <h2>Cookies</h2>
             <p>
               Le site utilise uniquement des cookies techniques strictement nécessaires à son
