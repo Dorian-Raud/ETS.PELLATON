@@ -18,13 +18,13 @@ export default function ContactPage() {
               <div className={styles.infoBlock}>
                 <span className={styles.infoLabel}>Téléphone</span>
                 <p>
-                  <a href="tel:+330601013771">0601013771</a>
+                  <a href="tel:+330601013771">+33601013771</a>
                 </p>
               </div>
               <div className={styles.infoBlock}>
                 <span className={styles.infoLabel}>E-mail</span>
                 <p>
-                  <a href="mailto:contact@ets-pellaton.com">contact@ets-pellaton.com</a>
+                  <a href="mailto:contact@ets-pellaton.com">contact@etspellaton.com</a>
                 </p>
               </div>
             </div>
