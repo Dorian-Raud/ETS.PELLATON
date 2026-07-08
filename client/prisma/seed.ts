@@ -1,7 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../lib/generated/prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { hash } from "@node-rs/argon2";
 
-const prisma = new PrismaClient();
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   console.log("🌱 Seeding database...");
@@ -18,6 +20,14 @@ async function main() {
   });
 
   console.log("👤 User created:", user.email);
+
+  // Les données de démo (artistes/œuvres factices) ne s'insèrent qu'en local,
+  // via `SEED_DEMO=true`. En prod, on ne seed que le compte admin ci-dessus.
+  if (process.env.SEED_DEMO !== "true") {
+    console.log("⏭️  SEED_DEMO != true → pas de données de démo.");
+    console.log("✅ Seeding finished !");
+    return;
+  }
 
   // 2. Artists
   const artist1 = await prisma.artist.create({

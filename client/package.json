@@ -16,7 +16,7 @@
     "db:migrate:deploy": "prisma migrate deploy",
     "db:generate": "prisma generate",
     "db:studio": "prisma studio",
-    "db:seed": "node --env-file=.env ./prisma/seed.ts",
+    "db:seed": "node --env-file=.env --import tsx ./prisma/seed.ts",
     "db:reset": "npm run db:migrate:reset && npm run db:migrate:deploy && npm run db:seed"
   },
   "prisma": {
