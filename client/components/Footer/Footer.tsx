@@ -11,7 +11,7 @@ export default function Footer() {
         <Link href="/confidentialite">Confidentialité</Link>
       </nav>
       <p className={styles.copy}>
-        © {new Date().getFullYear()} Galerie d&apos;art. Tous droits réservés.
+        © {new Date().getFullYear()} - Ets.Pellaton - Gallery Advisory - Tous droits réservés.
       </p>
     </footer>
   );
