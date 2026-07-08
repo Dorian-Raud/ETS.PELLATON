@@ -9,8 +9,15 @@ export const metadata: Metadata = {
     "Conseil en art : gestion de collections, conservation, expertises et valorisations, accompagnement stratégique sur mesure. Ets. Pellaton, de Londres à la Côte d'Azur et aux Émirats.",
 };
 
-const LOREM =
-  "Nous nous appuyons sur un réseau international de professionnels du marché de l\’art, réunissant experts du marché, restaurateurs, artistes et acteurs majeurs du secteur culturel, afin de concevoir des projets sur mesure en parfaite adéquation avec les objectifs de nos clients. Notre expertise couvre la gestion de collections, la conservation, les expertises et valorisations, ainsi qu\’un accompagnement stratégique personnalisé. Chaque projet est pensé pour conjuguer excellence artistique et connaissance approfondie du marché. Présents à Londres et sur la Côte d\’Azur, nous poursuivons aujourd\’hui notre développement au sein des marchés de l\’art en pleine expansion des Émirats arabes unis, créant des passerelles entre le patrimoine culturel et l\’innovation contemporaine.";
+const LOREM = `
+Ets. Pellaton s'appuie sur un réseau international de professionnels du marché de l'art : experts, restaurateurs, artistes et acteurs majeurs du secteur culturel pour concevoir des projets sur mesure, en parfaite adéquation avec les objectifs de chaque client.
+
+Notre Art Advisory est placé sous la direction de Justyna Grzes, diplômée d'un Master du Sotheby's Institute of Art, dont le regard conjugue une exigence académique et une fine connaissance du marché de l'art contemporain.
+
+Sous son impulsion, notre expertise couvre la gestion de collections, la conservation, l'expertise et la valorisation d'œuvres, ainsi qu'un accompagnement stratégique pensé pour chaque projet, dans une constante recherche d'excellence artistique.
+
+Présents à Londres et sur la Côte d'Azur, nous accompagnons collectionneurs et institutions avec la même exigence, la même discrétion et le même souci du détail, quelle que soit l'ampleur du projet.
+`;
 
 export default function ConseilPage() {
   return (

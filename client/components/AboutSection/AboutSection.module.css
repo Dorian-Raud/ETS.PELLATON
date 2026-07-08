@@ -24,6 +24,7 @@
   text-align: center;
   line-height: 1.8;
   color: var(--color-grey);
+  white-space: pre-line;
 }
 
 .imageWrapper {

@@ -9,8 +9,17 @@ export const metadata: Metadata = {
     "Ets. Pellaton, cabinet de conseil indépendant en art moderne et contemporain fondé par Maxime Pellaton, entre découverte d'artistes, accompagnement de collectionneurs et projets culturels.",
 };
 
-const LOREM =
-  "Fondé par Maxime Pellaton, Ets. Pellaton est un cabinet de conseil indépendant spécialisé dans l’art moderne et contemporain. Issu d’un parcours mêlant art, savoir-faire et accompagnement de projets culturels, Maxime Pellaton développe une pratique centrée sur la découverte, la promotion et l’accompagnement des artistes émergents, en créant des liens durables entre créateurs, collectionneurs et institutions. À travers un réseau de collectionneurs, d’artistes, de galeries, d’institutions et de professionnels du marché de l’art, Ets. Pellaton accompagne ses clients dans leurs acquisitions, la gestion de collections, la valorisation d’œuvres et le développement de projets culturels sur mesure. En parallèle de son activité de conseil, Maxime Pellaton documente le monde de l’art par la photographie, collaborant avec des artistes, des galeries et des institutions afin de produire des images qui témoignent avec justesse des œuvres, des expositions et des lieux qui les accueillent. Basé sur la Côte d’Azur et intervenant en France comme à l’international, Ets. Pellaton défend une approche indépendante, fondée sur la confiance, la discrétion et des relations durables avec ses clients et partenaires.";
+const LOREM = `
+Fondée par Maxime Pellaton, Ets. Pellaton est une galerie d'art en ligne consacrée à la curation et à l'accompagnement d'artistes émergents de la scène contemporaine.
+
+Notre démarche de curation privilégie des univers singuliers, portés par une cohérence de fond et un potentiel de développement qui nous semble mériter d'être révélé. Chaque artiste accompagné, chaque œuvre présentée, s'inscrit dans une même sensibilité celle d'une création contemporaine que nous aimons penser durable, au-delà des tendances du moment.
+
+En parallèle de son activité de galerie, Ets. Pellaton propose un service d'Art Advisory indépendant. Nous accompagnons collectionneurs, particuliers et entreprises dans leurs acquisitions, ainsi que dans la constitution et la valorisation de leur patrimoine artistique.
+
+Cet accompagnement s'appuie sur un réseau international d'artistes, de galeries, d'institutions et de maisons de vente, et se conduit toujours avec discrétion et sur mesure.
+
+Basée sur la Côte d'Azur, Ets. Pellaton intervient en France comme à l'international, avec le souci constant de construire des relations durables avec les artistes que nous accompagnons, les collectionneurs qui nous font confiance, et l'ensemble de nos partenaires.
+`;
 
 export default function AProposPage() {
   return (
