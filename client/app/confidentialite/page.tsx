@@ -58,8 +58,7 @@ export default function ConfidentialitePage() {
             <h2>Cookies</h2>
             <p>
               Le site utilise uniquement des cookies techniques strictement nécessaires à son
-              fonctionnement (maintien de session lors de la connexion à l&apos;espace
-              administrateur). Aucun cookie de mesure d&apos;audience ou publicitaire
+              fonctionnement. Aucun cookie de mesure d&apos;audience ou publicitaire
               n&apos;est utilisé.
             </p>
           </div>
