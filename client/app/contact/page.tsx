@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import ContactForm from "./ContactForm";
 import styles from "./contact.module.css";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contactez Ets. Pellaton pour un projet d'acquisition, de conseil ou de gestion de collection en art moderne et contemporain.",
+};
 
 export default function ContactPage() {
   return (
@@ -24,7 +31,7 @@ export default function ContactPage() {
               <div className={styles.infoBlock}>
                 <span className={styles.infoLabel}>E-mail</span>
                 <p>
-                  <a href="mailto:contact@ets-pellaton.com">contact@etspellaton.com</a>
+                  <a href="mailto:contact@etspellaton.com">contact@etspellaton.com</a>
                 </p>
               </div>
             </div>

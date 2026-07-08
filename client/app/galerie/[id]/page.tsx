@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Header from "@/components/Header/Header";
@@ -7,6 +8,44 @@ import { createCheckout } from "@/lib/payment-actions";
 import styles from "./artwork.module.css";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const artwork = await getArtworkById(id);
+
+  if (!artwork) {
+    return { title: "Œuvre introuvable" };
+  }
+
+  const title = `${artwork.title} — ${artwork.artist.name}`;
+  const description = artwork.description.slice(0, 160);
+  const canonical = `/galerie/${artwork.id}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      url: canonical,
+      images: artwork.imageUrl
+        ? [{ url: artwork.imageUrl, alt: artwork.title }]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: artwork.imageUrl ? [artwork.imageUrl] : undefined,
+    },
+  };
+}
 
 const priceFormatter = new Intl.NumberFormat("fr-FR", {
   style: "currency",
