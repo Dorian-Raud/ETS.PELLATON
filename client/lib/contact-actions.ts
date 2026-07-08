@@ -39,7 +39,7 @@ export async function sendContactMessage(
     // Resend ne lève pas d'exception sur un refus d'API : il renvoie { error }.
     // On doit donc vérifier ce champ, sinon un échec passe pour un succès.
     const { error: sendError } = await resend.emails.send({
-      from: "Site Ets.Pellaton <onboarding@resend.dev>",
+      from: "Site Ets.Pellaton <contact@etspellaton.com>",
       to: destination,
       replyTo: email,
       subject: `Nouveau message de ${name} via le site`,
