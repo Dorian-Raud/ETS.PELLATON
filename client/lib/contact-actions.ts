@@ -36,14 +36,22 @@ export async function sendContactMessage(
   const { name, email, message } = parsed.data;
 
   try {
-    await resend.emails.send({
+    // Resend ne lève pas d'exception sur un refus d'API : il renvoie { error }.
+    // On doit donc vérifier ce champ, sinon un échec passe pour un succès.
+    const { error: sendError } = await resend.emails.send({
       from: "Site Ets.Pellaton <onboarding@resend.dev>",
       to: destination,
       replyTo: email,
       subject: `Nouveau message de ${name} via le site`,
       text: `De : ${name} (${email})\n\n${message}`,
     });
-  } catch {
+
+    if (sendError) {
+      console.error("Échec envoi Resend:", sendError);
+      return { error: "L'envoi du message a échoué. Merci de réessayer plus tard." };
+    }
+  } catch (err) {
+    console.error("Exception envoi Resend:", err);
     return { error: "L'envoi du message a échoué. Merci de réessayer plus tard." };
   }
 
