@@ -19,5 +19,10 @@ export async function getArtworkById(id: string) {
 }
 
 export async function getArtistById(id: string) {
-  return prisma.artist.findUnique({ where: { id } });
+  return prisma.artist.findUnique({
+    where: { id },
+    include: {
+      artworks: { include: { artist: true }, orderBy: { createdAt: "desc" } },
+    },
+  });
 }

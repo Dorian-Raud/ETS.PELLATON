@@ -11,10 +11,16 @@ const priceFormatter = new Intl.NumberFormat("fr-FR", {
   maximumFractionDigits: 0,
 });
 
-export default function GalleryGrid({ artworks }: { artworks: ArtworkWithArtist[] }) {
+export default function GalleryGrid({
+  artworks,
+  heading = "Galerie",
+}: {
+  artworks: ArtworkWithArtist[];
+  heading?: string;
+}) {
   return (
     <section id="galerie" className={styles.section}>
-      <h2 className={styles.heading}>Galerie</h2>
+      <h2 className={styles.heading}>{heading}</h2>
       {artworks.length === 0 ? (
         <p className={styles.empty}>Aucune œuvre publiée pour le moment.</p>
       ) : (

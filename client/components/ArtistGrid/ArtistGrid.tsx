@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Artist } from "@/lib/generated/prisma/client";
 import styles from "./ArtistGrid.module.css";
 
@@ -11,7 +12,7 @@ export default function ArtistGrid({ artists }: { artists: Artist[] }) {
       ) : (
         <div className={styles.grid}>
           {artists.map((artist) => (
-            <article key={artist.id} className={styles.card}>
+            <Link key={artist.id} href={`/artistes/${artist.id}`} className={styles.card}>
               <div className={styles.imageWrapper}>
                 {artist.photoUrl ? (
                   <Image
@@ -28,7 +29,7 @@ export default function ArtistGrid({ artists }: { artists: Artist[] }) {
               <p className={styles.meta}>
                 {[artist.specialty, artist.nationality].filter(Boolean).join(" — ")}
               </p>
-            </article>
+            </Link>
           ))}
         </div>
       )}

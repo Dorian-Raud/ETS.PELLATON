@@ -36,5 +36,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Si la base est indisponible (ex. au build), on renvoie au moins les routes statiques.
   }
 
-  return [...staticRoutes, ...artworkRoutes];
+  let artistRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const artists = await prisma.artist.findMany({
+      select: { id: true, updatedAt: true, photoUrl: true },
+      orderBy: { updatedAt: "desc" },
+    });
+    artistRoutes = artists.map((a) => ({
+      url: `${SITE_URL}/artistes/${a.id}`,
+      lastModified: a.updatedAt,
+      changeFrequency: "weekly",
+      priority: 0.7,
+      images: a.photoUrl ? [a.photoUrl] : undefined,
+    }));
+  } catch {
+    // Idem : la base peut être indisponible au build.
+  }
+
+  return [...staticRoutes, ...artworkRoutes, ...artistRoutes];
 }

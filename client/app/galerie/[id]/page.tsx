@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { getArtworkById } from "@/lib/data";
@@ -89,7 +90,11 @@ export default async function ArtworkPage({
 
         <div className={styles.details}>
           <h1 className={styles.title}>{artwork.title}</h1>
-          <p className={styles.artist}>{artwork.artist.name}</p>
+          <p className={styles.artist}>
+            <Link href={`/artistes/${artwork.artist.id}`} className={styles.artistLink}>
+              {artwork.artist.name}
+            </Link>
+          </p>
           <p className={styles.meta}>
             {[artwork.medium, artwork.year].filter(Boolean).join(", ")}
           </p>
