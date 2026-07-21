@@ -7,16 +7,22 @@ import { prisma } from "@/lib/prisma";
 import { verifySession } from "@/lib/dal";
 import { uploadImage, deleteImage } from "@/lib/upload";
 
-const ArtworkSchema = z.object({
-  id: z.string().optional(),
-  title: z.string().min(1, "Titre requis."),
-  description: z.string().min(1, "Description requise."),
-  price: z.coerce.number().positive("Le prix doit être positif."),
-  medium: z.string().optional(),
-  year: z.string().optional(),
-  artistId: z.string().min(1, "Artiste requis."),
-  status: z.enum(["AVAILABLE", "RESERVED", "SOLD"]),
-});
+const ArtworkSchema = z
+  .object({
+    id: z.string().optional(),
+    title: z.string().min(1, "Titre requis."),
+    description: z.string().min(1, "Description requise."),
+    priceOnRequest: z.boolean(),
+    price: z.coerce.number().positive("Le prix doit être positif.").optional(),
+    medium: z.string().optional(),
+    year: z.string().optional(),
+    artistId: z.string().min(1, "Artiste requis."),
+    status: z.enum(["AVAILABLE", "RESERVED", "SOLD"]),
+  })
+  .refine((data) => data.priceOnRequest || data.price !== undefined, {
+    message: "Prix requis, ou cochez « Prix sur demande ».",
+    path: ["price"],
+  });
 
 export type ArtworkFormState = { error?: string } | undefined;
 
@@ -30,7 +36,8 @@ export async function saveArtwork(
     id: formData.get("id") || undefined,
     title: formData.get("title"),
     description: formData.get("description"),
-    price: formData.get("price"),
+    priceOnRequest: formData.get("priceOnRequest") === "on",
+    price: formData.get("price") || undefined,
     medium: formData.get("medium") || undefined,
     year: formData.get("year") || undefined,
     artistId: formData.get("artistId"),
@@ -41,7 +48,9 @@ export async function saveArtwork(
     return { error: parsed.error.issues[0]?.message ?? "Formulaire invalide." };
   }
 
-  const { id, ...data } = parsed.data;
+  const { id, priceOnRequest, price, ...rest } = parsed.data;
+  // Prix sur demande : on stocke null pour ne pas afficher de prix.
+  const data = { ...rest, price: priceOnRequest ? null : price };
   const imageFile = formData.get("image");
 
   let imageUrl: string | undefined;

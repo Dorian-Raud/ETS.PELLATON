@@ -7,8 +7,8 @@ import { MAX_IMAGE_SIZE_BYTES, MAX_IMAGE_SIZE_MB } from "@/lib/constants";
 import styles from "../admin-form.module.css";
 
 // price est un Decimal côté Prisma : non sérialisable vers un Client Component,
-// donc on le reçoit déjà converti en number.
-type ArtworkFormData = Omit<Artwork, "price"> & { price: number };
+// donc on le reçoit déjà converti en number (ou null pour « Prix sur demande »).
+type ArtworkFormData = Omit<Artwork, "price"> & { price: number | null };
 
 export default function ArtworkForm({
   artwork,
@@ -19,6 +19,7 @@ export default function ArtworkForm({
 }) {
   const [state, action, pending] = useActionState(saveArtwork, undefined);
   const [fileError, setFileError] = useState<string | null>(null);
+  const [priceOnRequest, setPriceOnRequest] = useState(artwork?.price == null && !!artwork);
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -65,9 +66,19 @@ export default function ArtworkForm({
             type="number"
             step="1"
             min="0"
-            defaultValue={artwork ? Number(artwork.price) : undefined}
-            required
+            defaultValue={artwork && artwork.price != null ? Number(artwork.price) : undefined}
+            required={!priceOnRequest}
+            disabled={priceOnRequest}
           />
+          <label className={styles.checkbox}>
+            <input
+              type="checkbox"
+              name="priceOnRequest"
+              checked={priceOnRequest}
+              onChange={(event) => setPriceOnRequest(event.target.checked)}
+            />
+            Prix sur demande
+          </label>
         </div>
         <div className={styles.field}>
           <label htmlFor="medium">Technique</label>

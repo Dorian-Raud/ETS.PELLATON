@@ -34,7 +34,11 @@ export default async function ArtworksPage() {
             <tr key={artwork.id}>
               <td>{artwork.title}</td>
               <td>{artwork.artist.name}</td>
-              <td>{Number(artwork.price).toLocaleString("fr-FR")} €</td>
+              <td>
+                {artwork.price == null
+                  ? "Prix sur demande"
+                  : `${Number(artwork.price).toLocaleString("fr-FR")} €`}
+              </td>
               <td>
                 {artwork.status === "SOLD"
                   ? "Vendu"

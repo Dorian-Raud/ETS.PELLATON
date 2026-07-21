@@ -48,7 +48,9 @@ export default function GalleryGrid({ artworks }: { artworks: ArtworkWithArtist[
                 {[artwork.medium, artwork.year].filter(Boolean).join(", ")}
               </p>
               <p className={styles.price}>
-                {priceFormatter.format(Number(artwork.price))}
+                {artwork.price == null
+                  ? "Prix sur demande"
+                  : priceFormatter.format(Number(artwork.price))}
               </p>
             </Link>
           ))}

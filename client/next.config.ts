@@ -7,14 +7,14 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
+    // En dev, la résolution DNS locale renvoie une adresse NAT64 (64:ff9b::…)
+    // que l'optimiseur Next bloque (protection anti-SSRF). On charge donc les
+    // images directement depuis le navigateur en dev ; la prod reste optimisée.
+    unoptimized: process.env.NODE_ENV === "development",
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "*.public.blob.vercel-storage.com",
-      },
-      {
-        protocol: "https",
-        hostname: "example.com",
+        hostname: "**.public.blob.vercel-storage.com",
       },
     ],
   },

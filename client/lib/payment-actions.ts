@@ -27,7 +27,7 @@ export async function createCheckout(formData: FormData) {
   const order = await prisma.$transaction(async (tx) => {
     const artwork = await tx.artwork.findUnique({ where: { id: artworkId } });
 
-    if (!artwork || artwork.status !== "AVAILABLE") {
+    if (!artwork || artwork.status !== "AVAILABLE" || artwork.price == null) {
       return null;
     }
 

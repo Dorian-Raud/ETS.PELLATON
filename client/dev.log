@@ -1,0 +1,14 @@
+
+> my-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.95.28.127:3000
+- Environments: .env
+✓ Ready in 1068ms
+- Experiments (use with caution):
+  · serverActions
+
+ GET /galerie 200 in 1682ms (next.js: 445ms, application-code: 1237ms)
+ GET /galerie 200 in 218ms (next.js: 6ms, application-code: 212ms)

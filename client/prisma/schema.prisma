@@ -41,7 +41,7 @@ model Artwork {
   id          String        @id @default(cuid())
   title       String
   description String
-  price       Decimal       @db.Decimal(10, 2)
+  price       Decimal?      @db.Decimal(10, 2)
   imageUrl    String?
   medium      String?
   year        String?
